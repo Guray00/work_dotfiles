@@ -1,0 +1,45 @@
+---
+brew_taps:
+  - domt4/autoupdate
+  - homebrew/cask-versions
+  - homebrew/cask-fonts
+
+brew_packages:
+  - git
+  - git-extras
+  - ansible
+  - terminal-notifier     # used inside this repo
+  - neovim
+  - exa                   # modern ls
+  - ripgrep               # modern grep
+  - bat                   # modern cat
+  - btop
+  - mas                   # mac store command line interface
+  - tmux
+  - node
+  - wget
+  - neofetch              # informations about the system
+  - stow                  # must for syslink files for dotfiles
+  - duti                  # setup defaults from cmd line
+  - tree
+  - caffeine              # keeps the mac awake
+  - hiddenbar
+
+cask_packages:
+  - github
+  - raycast               # alfred alternative
+  - font-hack-nerd-font
+  - spotify
+  - insomnia              # postman alternative opensource
+  - font-fira-code
+  - font-poppins
+  - openinterminal  	  # shortcut for finder
+
+mas_packages:
+  - 1452453066    # HiddenBar
+  
+npm_packages:
+  - nodemon
+
+pip_packages:
+  - patool

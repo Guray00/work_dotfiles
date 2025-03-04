@@ -1,0 +1,252 @@
+---
+- name: "[ macOS] Disable \"Are you sure to open this application?\" dialog"
+  osx_defaults:
+    domain: com.apple.LaunchServices
+    key: LSQuarantine
+    type: bool
+    value: false
+    state: present
+
+- name: "[ macOS] Check for software updates daily, not just once per week"
+  osx_defaults:
+    domain: com.apple.SoftwareUpdate
+    key: ScheduleFrequency
+    type: integer
+    value: 1
+    state: present
+
+- name: "[ macOS] Disable smart quotes as they’re annoying when typing code"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticQuoteSubstitutionEnabled
+    type: bool
+    value: false
+    state: present
+
+- name: "[ macOS] Disable smart dashes as they’re annoying when typing code"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticDashSubstitutionEnabled
+    type: bool
+    value: false
+    state: present
+
+- name: "[ macOS] Disable auto capitalization as they’re annoying when typing code"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticCapitalizationEnabled 
+    type: bool
+    value: false
+    state: present
+
+- name: "[ macOS] Disable auto periods as they’re annoying when typing code"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: NSAutomaticPeriodSubstitutionEnabled 
+    type: bool
+    value: false
+    state: present
+
+###########################################################################
+#                               DESKTOP
+###########################################################################
+
+- name: "[ macOS] Desktop - Hide icons on desktop"
+  osx_defaults:
+    domain: com.apple.finder
+    key: CreateDesktop
+    type: bool
+    value: false
+    state: present
+
+###########################################################################
+#                           FINDER
+###########################################################################
+
+- name: "[ macOS] Finder - show pathbar at the bottom"
+  osx_defaults:
+    domain: com.apple.finder
+    key: ShowPathbar
+    type: bool
+    value: true
+    state: present
+
+- name: "[ macOS] Finder - show folders on top"
+  osx_defaults:
+    domain: com.apple.finder
+    key: _FXSortFoldersFirst
+    type: bool
+    value: true
+    state: present
+
+- name: "[ macOS] Finder - disable changing extensions warning"
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXEnableExtensionChangeWarning
+    type: bool
+    value: false
+    state: present
+
+- name: "[ macOS] Finder - icons as preferred view"
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXPreferredViewStyle
+    type: string
+    value: icnv
+    state: present
+
+- name: "[ macOS] Finder - search by default in folder"
+  osx_defaults:
+    domain: com.apple.finder
+    key: FXDefaultSearchScope
+    type: string
+    value: SCcf
+    state: present
+
+###########################################################################
+#                           DOCK
+###########################################################################
+
+- name: "[ macOS] Dock - only active apps on the dock"
+  osx_defaults:
+    domain: com.apple.dock
+    key: "static-only"
+    type: bool
+    value: false
+    state: present
+
+- name: "[ macOS] Dock - dock size"
+  osx_defaults:
+    domain: com.apple.dock
+    key: tilesize
+    type: int
+    value: 48
+    state: present
+
+- name: "[ macOS] Dock - enable autohide"
+  osx_defaults:
+    domain: com.apple.dock
+    key: autohide
+    type: bool
+    value: true 
+    state: present
+
+- name: "[ macOS] Dock - disable show recents"
+  osx_defaults:
+    domain: com.apple.dock
+    key: "show-recents"
+    type: bool
+    value: false
+    state: present
+
+###########################################################################
+#                          TRACKPAD 
+###########################################################################
+
+- name: "[ macOS] Trackpad - enable tap to click for user and login screen"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.mouse.tapBehavior
+    type: integer
+    value: 1
+    state: present
+
+- name: "[ macOS] Trackpad - enable tap to click for user and login screen"
+  osx_defaults:
+    domain: com.apple.driver.AppleBluetoothMultitouch.trackpad
+    key: Clicking
+    type: integer
+    value: 1
+    state: present
+
+- name: "[ macOS] Disable press-and-hold for keys in favor of key repeat"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: ApplePressAndHoldEnabled
+    type: bool
+    value: false
+    state: present
+
+- name: "[ macOS] Set a blazingly fast keyboard repeat rate"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: KeyRepeat
+    type: integer
+    value: 2
+    state: present
+
+- name: "[ macOS] Set a short keyboard repeat rate delay"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: InitialKeyRepeat
+    type: integer
+    value: 15
+    state: present
+
+- name: "[ macOS] Increase speed of trackpad cursor movement"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key: com.apple.trackpad.scaling
+    type: float
+    value: 0.875
+    state: present
+
+# - name: "[ macOS] iterm2 - Specify the preferences directory"
+  # osx_defaults:
+    # domain: com.googlecode.iterm2.plist
+    # key: PrefsCustomFolder
+    # type: string
+    # value: /Users/marco/.dotfiles/files/iterm2
+    # state: present
+
+# - name: "[ macOS] iterm2 - Use the custom preferences in the directory"
+  # osx_defaults:
+    # domain: com.googlecode.iterm2.plist
+    # key: LoadPrefsFromCustomFolder
+    # type: integer
+    # value: 1
+    # state: present
+
+- name: "[ macOS] iterm2 - Save changes on exit 1/2"
+  osx_defaults:
+    domain: com.googlecode.iterm2.plist
+    key: NoSyncNeverRemindPrefsChangesLostForFile
+    type: integer
+    value: 1
+    state: present
+
+- name: "[ macOS] iterm2 - Save changes on exit 2/2"
+  osx_defaults:
+    domain: com.googlecode.iterm2.plist
+    key: NoSyncNeverRemindPrefsChangesLostForFile_selection
+    type: integer
+    value: 0
+    state: present
+    
+- name: "[ macOS] Show all extensions"
+  osx_defaults:
+    domain: NSGlobalDomain
+    key:  AppleShowAllExtensions
+    type: bool
+    value: true 
+    state: present
+
+- name: "[ macOS] defaults - Adding vscode as default editor"
+  become: yes
+  command: bash {{ ansible_env.PWD }}/scripts/code_default_editor.sh
+
+
+###########################################################################
+#                        Restart to take effect 
+###########################################################################
+
+- name: "[ macOS] Restart Finder"
+  become: yes
+  command: killall Finder
+
+- name: "[ macOS] Restart Dock"
+  become: yes
+  command: killall Dock
+
+
+# reference https://macos-defaults.com/finder/fxenableextensionchangewarning.html

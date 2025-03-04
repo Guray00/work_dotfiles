@@ -1,0 +1,47 @@
+---
+- name: Set up local workstation
+  hosts: local
+
+  vars_files: ["config.yml"]
+
+  pre_tasks:
+    - name: "[﬒ dotfiles] Include config.yml overrides"
+      include_vars: "{{ item }}"
+      with_fileglob: "{{ playbook_dir }}/config.yml"
+      tags: ["always"]
+
+  roles:
+    - role: geerlingguy.mac.homebrew
+      tags: ["brew"]
+      homebrew_taps: []
+      when: ansible_distribution == 'MacOSX'
+
+    - role: brew
+      tags: ["brew"]
+      homebrew_taps: []
+      when: ansible_distribution == 'MacOSX'
+
+    # syslink and general setup
+    - role: dotfiles
+      tags: ["dotfiles"]
+
+    - role: npm
+      tags: ["npm"]
+
+    # used to install app store apps
+    # - role: mas
+    #   tags: ["mas"]
+    #   when: ansible_distribution == 'MacOSX'
+
+    # used for configuration
+    - role: macos
+      tags: ["macos"]
+      when: ansible_distribution == 'MacOSX'
+
+    # used for pip packages
+    # - role: pip
+    #   tags: ["pip"]
+
+    # - role: gem
+    #   tags: ["gem"]
+
